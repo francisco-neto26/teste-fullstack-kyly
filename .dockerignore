@@ -1,0 +1,13 @@
+# Exclude node_modules from build context (platform-specific binaries must be installed inside the container)
+**/node_modules/
+
+# Exclude Angular build output and cache
+**/dist/
+**/.angular/
+
+# Exclude git history
+.git/
+
+# Exclude local env overrides
+.env
+.env.local
