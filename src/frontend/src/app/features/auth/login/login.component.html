@@ -1,0 +1,61 @@
+<main class="login-page">
+  <section class="login-page__hero">
+    <div class="login-page__hero-content">
+     <img src="assets/images/grupo_kyly_logo.jpg" alt="Logo Grupo Kyly" width=250.px height=250.px />
+    </div>
+  </section>
+
+  <section class="login-page__form">
+    <p-card>
+      <ng-template pTemplate="header">
+        <div class="login-page__card-header">
+          <h2>Bem-vindo</h2>
+          <p>Entre para acessar o catálogo de produtos.</p>
+        </div>
+      </ng-template>
+
+      @if (erro) {
+        <p-message severity="error" [text]="erro" styleClass="login-page__erro" />
+      }
+
+      <form [formGroup]="formulario" (ngSubmit)="entrar()" class="login-page__fields">
+        <div class="campo">
+          <label for="username">Usuário</label>
+          <span class="p-input-icon-left campo__input">
+            <i class="pi pi-user"></i>
+            <input
+              id="username"
+              type="text"
+              pInputText
+              formControlName="username"
+              autocomplete="username"
+              placeholder="Digite seu usuário"
+            />
+          </span>
+        </div>
+
+        <div class="campo">
+          <label for="password">Senha</label>
+          <p-password
+            inputId="password"
+            formControlName="password"
+            [feedback]="false"
+            [toggleMask]="true"
+            placeholder="Digite sua senha"
+            styleClass="campo__senha"
+            inputStyleClass="w-full"
+          />
+        </div>
+
+        <button
+          pButton
+          type="submit"
+          label="Entrar"
+          icon="pi pi-sign-in"
+          [loading]="carregando"
+          [disabled]="formulario.invalid || carregando"
+        ></button>
+      </form>
+    </p-card>
+  </section>
+</main>

@@ -1,0 +1,14 @@
+<header class="cabecalho">
+  <div class="cabecalho__marca">
+    <img src="assets/images/logo_interno.png" />    
+  </div>
+
+  <button
+    pButton
+    label="Sair"
+    icon="pi pi-sign-out"
+    severity="secondary"
+    [outlined]="true"
+    (click)="sair.emit()"
+  ></button>
+</header>

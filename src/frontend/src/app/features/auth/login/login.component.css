@@ -1,0 +1,144 @@
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.login-page__hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: linear-gradient(145deg, var(--kyly-primary) 0%, #141b45 50%, var(--kyly-primary-light) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-page__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(201, 151, 63, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+}
+
+.login-page__hero-content {
+  position: relative;
+  max-width: 26rem;
+}
+
+.login-page__logo {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  font-size: 1.75rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-page__hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.login-page__hero p {
+  font-size: 1.0625rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.login-page__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--kyly-bg);
+}
+
+.login-page__form p-card {
+  width: min(100%, 420px);
+}
+
+.login-page__card-header {
+  padding: 1.75rem 1.75rem 0;
+}
+
+.login-page__card-header h2 {
+  font-size: 1.5rem;
+  color: var(--kyly-primary);
+  margin-bottom: 0.35rem;
+}
+
+.login-page__card-header p {
+  color: var(--kyly-text-muted);
+  font-size: 0.9375rem;
+}
+
+.login-page__fields {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.campo {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--kyly-text);
+}
+
+.campo__input {
+  display: block;
+  width: 100%;
+}
+
+.campo__input input {
+  width: 100%;
+  padding-left: 2.5rem;
+}
+
+.campo__input i {
+  left: 0.875rem;
+  color: var(--kyly-text-muted);
+}
+
+:host ::ng-deep .campo__senha,
+:host ::ng-deep .campo__senha .p-password-input {
+  width: 100%;
+}
+
+:host ::ng-deep .login-page__erro {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-page__hero {
+    padding: 2.5rem 1.5rem;
+    min-height: auto;
+  }
+
+  .login-page__hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .login-page__logo {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.25rem;
+  }
+}

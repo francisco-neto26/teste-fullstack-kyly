@@ -1,0 +1,40 @@
+<app-cabecalho (sair)="sair()" />
+
+<main class="pagina">
+  <section class="pagina__hero">
+    <h1>Encontre produtos</h1>    
+  </section>
+
+  <section class="pagina__busca">
+    <app-barra-busca [desabilitado]="carregando" (buscar)="pesquisar($event)" />
+  </section>
+
+  @if (erro) {
+    <p-message severity="error" [text]="erro" />
+  }
+
+  <section class="pagina__resultados">
+    @if (carregando) {
+      <app-carregando mensagem="Buscando produtos..." />
+    } @else if (produtos.length > 0) {
+      <app-tabela-produtos
+        [produtos]="produtos"
+        [paginaAtual]="paginaAtual"
+        [totalRegistros]="totalRegistros"
+        (mudarPagina)="mudarPagina($event)"
+      />
+    } @else if (termo) {
+      <app-estado-vazio
+        icone="pi pi-inbox"
+        titulo="Nenhum produto encontrado"
+        [descricao]="descricaoSemResultados"
+      />
+    } @else {
+      <app-estado-vazio
+        icone="pi pi-search"
+        titulo="Comece sua busca"
+        descricao="Digite o código ou a descrição do produto no campo acima para consultar o catálogo."
+      />
+    }
+  </section>
+</main>

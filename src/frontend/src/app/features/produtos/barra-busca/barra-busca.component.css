@@ -1,0 +1,36 @@
+.barra-busca {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.barra-busca__campo {
+  flex: 1;
+  display: block;
+}
+
+.barra-busca__campo input {
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 2.75rem;
+  font-size: 1rem;
+}
+
+.barra-busca__campo i {
+  left: 1rem;
+  color: var(--kyly-text-muted);
+}
+
+.barra-busca button {
+  flex-shrink: 0;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .barra-busca {
+    flex-direction: column;
+  }
+
+  .barra-busca button {
+    width: 100%;
+  }
+}
