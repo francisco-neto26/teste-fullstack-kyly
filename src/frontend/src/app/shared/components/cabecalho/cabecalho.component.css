@@ -15,27 +15,52 @@
   gap: 0.75rem;
 }
 
-.cabecalho__logo {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--kyly-primary), var(--kyly-primary-light));
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.125rem;
+.cabecalho__logo-img {
+  height: 2.25rem;
+  width: auto;
+  object-fit: contain;
 }
 
-.cabecalho__titulo {
-  display: block;
-  font-size: 1.0625rem;
-  color: var(--kyly-primary);
-  line-height: 1.2;
+.cabecalho__usuario-acoes {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-.cabecalho__subtitulo {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--kyly-text-muted);
+.cabecalho__usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-right: 1rem;
+  border-right: 1px solid var(--kyly-border);
+}
+
+:host ::ng-deep .cabecalho__avatar {
+  background-color: #0052cc !important;
+  color: #ffffff !important;
+}
+
+.cabecalho__usuario-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.cabecalho__usuario-nome {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--kyly-text, #2d3748);
+  text-transform: capitalize;
+}
+
+:host ::ng-deep .cabecalho__tag {
+  font-size: 0.65rem !important;
+  padding: 0.1rem 0.4rem !important;
+}
+
+@media (max-width: 600px) {
+  .cabecalho__usuario-info {
+    display: none;
+  }
 }

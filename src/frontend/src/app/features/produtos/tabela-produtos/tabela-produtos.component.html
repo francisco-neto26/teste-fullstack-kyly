@@ -5,7 +5,19 @@
       <strong>{{ totalRegistros }}</strong>
       {{ totalRegistros === 1 ? 'produto encontrado' : 'produtos encontrados' }}
     </span>
-    <span class="tabela-produtos__pagina">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
+
+    <div class="tabela-produtos__acoes">
+      <span class="tabela-produtos__pagina">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
+      <p-button 
+        label="Exportar CSV" 
+        icon="pi pi-download" 
+        severity="success" 
+        [outlined]="true"
+        size="small" 
+        [loading]="carregandoExportacao"
+        (onClick)="solicitarExportacao()"
+      />
+    </div>
   </div>
 
   <p-table
@@ -15,29 +27,26 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Código</th>
-        <th>Produto</th>
-        <th>Cor</th>
-        <th>Tamanho</th>
+        <th class="text-center" style="width: 140px;">Código</th>
+        <th class="text-left">Produto</th>
+        <th class="text-center" style="width: 220px;">Cor</th>
+        <th class="text-center" style="width: 130px;">Tamanho</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-produto>
-      <tr>
-        <td>
+      <tr (click)="selecionarProduto(produto)" style="cursor: pointer;">
+        <td class="text-center">
           <span class="tabela-produtos__codigo">{{ produto.codigoProduto }}</span>
         </td>
-        <td>
+        <td class="text-left">
           <span class="tabela-produtos__descricao">{{ produto.descProduto }}</span>
-          <span class="tabela-produtos__id">{{ produto.id }}</span>
         </td>
-        <td>
+        <td class="text-center">
           <p-tag [value]="produto.descCor" severity="info" />
-          <span class="tabela-produtos__codigo-aux">{{ produto.codigoCor }}</span>
         </td>
-        <td>
+        <td class="text-center">
           <p-tag [value]="produto.descTamanho" severity="secondary" />
-          <span class="tabela-produtos__codigo-aux">{{ produto.codigoTamanho }}</span>
         </td>
       </tr>
     </ng-template>
@@ -52,3 +61,92 @@
     />
   }
 </div>
+
+<!-- Modal de Confirmação de Exportação -->
+<p-dialog 
+  header="Opções de Exportação (CSV)" 
+  [(visible)]="exibirModalExportacao" 
+  [modal]="true" 
+  [style]="{ width: '420px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p style="margin-bottom: 1.5rem; color: var(--kyly-text-muted); font-size: 0.9rem; line-height: 1.4;">
+    Foram encontrados <strong>{{ totalRegistros }}</strong> produtos divididos em <strong>{{ totalPaginas }}</strong> páginas. Como deseja exportar?
+  </p>
+
+  <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+    <p-button 
+      label="Apenas Página Atual ({{ produtos.length }} itens)" 
+      icon="pi pi-file" 
+      severity="secondary" 
+      [outlined]="true"
+      styleClass="w-full"
+      (onClick)="exportarPaginaAtual()"
+    />
+    <p-button 
+      label="Todos os Resultados ({{ totalRegistros }} itens)" 
+      icon="pi pi-download" 
+      severity="success" 
+      styleClass="w-full"
+      (onClick)="exportarTudo()"
+    />
+  </div>
+</p-dialog>
+
+<!-- Modal de Detalhes do Produto -->
+<p-dialog 
+  [header]="produtoSelecionado?.descProduto || 'Ficha do Produto'" 
+  [(visible)]="exibirModalDetalhes" 
+  [modal]="true" 
+  [style]="{ width: '480px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  @if (produtoSelecionado) {
+    <div class="modal-detalhes">
+      <div class="modal-detalhes__id-box">
+        <div>
+          <span class="modal-detalhes__label">ID Completo</span>
+          <span class="modal-detalhes__id">{{ produtoSelecionado.id }}</span>
+        </div>
+        <p-button 
+          [label]="codigoCopiado ? 'Copiado!' : 'Copiar Código'" 
+          [icon]="codigoCopiado ? 'pi pi-check' : 'pi pi-copy'" 
+          [severity]="codigoCopiado ? 'success' : 'secondary'"
+          [outlined]="true"
+          size="small" 
+          (onClick)="copiarCodigo(produtoSelecionado.codigoProduto)"
+        />
+      </div>
+
+      <div class="modal-detalhes__grid">
+        <div class="modal-detalhes__item">
+          <span class="modal-detalhes__label"><i class="pi pi-barcode"></i> Código do Produto</span>
+          <strong class="modal-detalhes__valor-codigo">{{ produtoSelecionado.codigoProduto }}</strong>
+        </div>
+
+        <div class="modal-detalhes__item">
+          <span class="modal-detalhes__label"><i class="pi pi-tag"></i> Descrição</span>
+          <span class="modal-detalhes__valor">{{ produtoSelecionado.descProduto }}</span>
+        </div>
+
+        <div class="modal-detalhes__item">
+          <span class="modal-detalhes__label"><i class="pi pi-palette"></i> Cor</span>
+          <div class="modal-detalhes__badge-group">
+            <p-tag [value]="produtoSelecionado.descCor" severity="info" />
+            <span class="modal-detalhes__aux">(Cód: {{ produtoSelecionado.codigoCor }})</span>
+          </div>
+        </div>
+
+        <div class="modal-detalhes__item">
+          <span class="modal-detalhes__label"><i class="pi pi-ruler"></i> Tamanho</span>
+          <div class="modal-detalhes__badge-group">
+            <p-tag [value]="produtoSelecionado.descTamanho" severity="secondary" />
+            <span class="modal-detalhes__aux">(Cód: {{ produtoSelecionado.codigoTamanho }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</p-dialog>
