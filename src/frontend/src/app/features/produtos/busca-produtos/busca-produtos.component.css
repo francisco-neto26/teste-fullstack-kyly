@@ -1,0 +1,49 @@
+.pagina {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.pagina__hero {
+  margin-bottom: 2rem;
+}
+
+.pagina__hero h1 {
+  font-size: 1.875rem;
+  color: var(--kyly-primary);
+  margin-bottom: 0.5rem;
+}
+
+.pagina__hero p {
+  color: var(--kyly-text-muted);
+  font-size: 1rem;
+  max-width: 36rem;
+  line-height: 1.6;
+}
+
+.pagina__busca {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--kyly-surface);
+  border: 1px solid var(--kyly-border);
+  border-radius: var(--kyly-radius-lg);
+  box-shadow: var(--kyly-shadow);
+}
+
+.pagina__resultados {
+  min-height: 12rem;
+}
+
+@media (max-width: 576px) {
+  .pagina {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .pagina__hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .pagina__busca {
+    padding: 1rem;
+  }
+}

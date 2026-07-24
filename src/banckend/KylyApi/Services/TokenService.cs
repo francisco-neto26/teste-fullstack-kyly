@@ -17,7 +17,7 @@ public class TokenService : ITokenService
 
     public string GerarToken(ApplicationUser usuario)
     {
-        // 1. Define os dados (claims) contidos dentro do Token JWT
+        // Define os dados (claims) contidos dentro do Token JWT
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, usuario.Id),
@@ -25,16 +25,16 @@ public class TokenService : ITokenService
             new Claim(ClaimTypes.Email, usuario.Email ?? string.Empty)
         };
 
-        // 2. Lê a chave que veio do .env via IConfiguration do .NET
+        // Lê a chave que veio do .env via IConfiguration do .NET
         var secretKey = _config["JwtSettings:SecretKey"] 
             ?? throw new InvalidOperationException("A chave JWT_SECRET_KEY não foi encontrada no ambiente.");
         
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
 
-        // 3. Define as credenciais de assinatura (Algoritmo HMAC SHA256)
+        // Define as credenciais de assinatura (Algoritmo HMAC SHA256)
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        // 4. Configura as informações do Token
+        // Configura as informações do Token
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
@@ -44,7 +44,7 @@ public class TokenService : ITokenService
             Audience = _config["JwtSettings:Audience"]
         };
 
-        // 5. Gera e retorna a string do Token JWT
+        // Gera e retorna a string do Token JWT
         var tokenHandler = new JwtSecurityTokenHandler();
         var token = tokenHandler.CreateToken(tokenDescriptor);
 

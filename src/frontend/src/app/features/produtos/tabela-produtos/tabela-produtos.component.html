@@ -1,0 +1,54 @@
+<div class="tabela-produtos">
+  <div class="tabela-produtos__resumo">
+    <span class="tabela-produtos__contagem">
+      <i class="pi pi-box"></i>
+      <strong>{{ totalRegistros }}</strong>
+      {{ totalRegistros === 1 ? 'produto encontrado' : 'produtos encontrados' }}
+    </span>
+    <span class="tabela-produtos__pagina">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
+  </div>
+
+  <p-table
+    [value]="produtos"
+    styleClass="p-datatable-sm tabela-produtos__grid tabela-produtos__striped"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Produto</th>
+        <th>Cor</th>
+        <th>Tamanho</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-produto>
+      <tr>
+        <td>
+          <span class="tabela-produtos__codigo">{{ produto.codigoProduto }}</span>
+        </td>
+        <td>
+          <span class="tabela-produtos__descricao">{{ produto.descProduto }}</span>
+          <span class="tabela-produtos__id">{{ produto.id }}</span>
+        </td>
+        <td>
+          <p-tag [value]="produto.descCor" severity="info" />
+          <span class="tabela-produtos__codigo-aux">{{ produto.codigoCor }}</span>
+        </td>
+        <td>
+          <p-tag [value]="produto.descTamanho" severity="secondary" />
+          <span class="tabela-produtos__codigo-aux">{{ produto.codigoTamanho }}</span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  @if (totalPaginas > 1) {
+    <p-paginator
+      [rows]="15"
+      [totalRecords]="totalRegistros"
+      [first]="(paginaAtual - 1) * 15"
+      (onPageChange)="aoMudarPagina($event)"
+    />
+  }
+</div>

@@ -5,6 +5,7 @@ WORKDIR /app
 # Copia as dependências do caminho do frontend a partir da raiz
 COPY src/frontend/package*.json ./
 RUN npm install --legacy-peer-deps
+# RUN npm ci --legacy-peer-deps
 
 # Copia todo o código-fonte do frontend
 COPY src/frontend/ ./

@@ -1,0 +1,87 @@
+.tabela-produtos {
+  background: var(--kyly-surface);
+  border: 1px solid var(--kyly-border);
+  border-radius: var(--kyly-radius-lg);
+  box-shadow: var(--kyly-shadow);
+  overflow: hidden;
+}
+
+.tabela-produtos__resumo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--kyly-bg);
+  border-bottom: 1px solid var(--kyly-border);
+  font-size: 0.875rem;
+  color: var(--kyly-text-muted);
+}
+
+.tabela-produtos__contagem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tabela-produtos__contagem i {
+  color: var(--kyly-accent);
+}
+
+.tabela-produtos__contagem strong {
+  color: var(--kyly-primary);
+  font-size: 1rem;
+}
+
+.tabela-produtos__pagina {
+  font-size: 0.8125rem;
+}
+
+:host ::ng-deep .tabela-produtos__grid .p-datatable-wrapper {
+  border-radius: 0;
+}
+
+:host ::ng-deep .tabela-produtos__striped .p-datatable-tbody > tr:nth-child(even) {
+  background: var(--kyly-bg);
+}
+
+.tabela-produtos__codigo {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-weight: 600;
+  color: var(--kyly-primary);
+  font-size: 0.875rem;
+}
+
+.tabela-produtos__descricao {
+  display: block;
+  font-weight: 500;
+}
+
+.tabela-produtos__id {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--kyly-text-muted);
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.tabela-produtos__codigo-aux {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--kyly-text-muted);
+}
+
+:host ::ng-deep .tabela-produtos .p-paginator {
+  padding: 0.75rem 1.25rem 1rem;
+  border-top: 1px solid var(--kyly-border);
+  background: var(--kyly-bg);
+}
+
+@media (max-width: 768px) {
+  .tabela-produtos__resumo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,1 +1,130 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  --kyly-primary: #1e2761;
+  --kyly-primary-light: #2d3a8c;
+  --kyly-accent: #c9973f;
+  --kyly-accent-soft: #f5ead6;
+  --kyly-surface: #ffffff;
+  --kyly-bg: #f4f6fb;
+  --kyly-bg-alt: #e8ecf4;
+  --kyly-text: #1a1d26;
+  --kyly-text-muted: #6b7280;
+  --kyly-border: #e2e8f0;
+  --kyly-shadow: 0 4px 24px rgba(30, 39, 97, 0.08);
+  --kyly-shadow-lg: 0 12px 40px rgba(30, 39, 97, 0.12);
+  --kyly-radius: 12px;
+  --kyly-radius-lg: 20px;
+
+  --primary-color: var(--kyly-primary);
+  --primary-color-text: #ffffff;
+  --font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--kyly-text);
+  background: var(--kyly-bg);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+}
+
+/* PrimeNG overrides */
+.p-button {
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-link) {
+  background: var(--kyly-primary);
+  border-color: var(--kyly-primary);
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-link):hover {
+  background: var(--kyly-primary-light);
+  border-color: var(--kyly-primary-light);
+}
+
+.p-inputtext {
+  border-radius: 10px;
+  border-color: var(--kyly-border);
+}
+
+.p-inputtext:enabled:focus {
+  border-color: var(--kyly-primary);
+  box-shadow: 0 0 0 2px rgba(30, 39, 97, 0.12);
+}
+
+.p-card {
+  border-radius: var(--kyly-radius-lg);
+  box-shadow: var(--kyly-shadow);
+  border: 1px solid var(--kyly-border);
+}
+
+.p-card .p-card-title {
+  font-weight: 700;
+  color: var(--kyly-primary);
+}
+
+.p-toolbar {
+  background: var(--kyly-surface);
+  border: none;
+  border-bottom: 1px solid var(--kyly-border);
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: var(--kyly-bg);
+  color: var(--kyly-primary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-color: var(--kyly-border);
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  transition: background-color 0.15s ease;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: var(--kyly-accent-soft) !important;
+}
+
+.p-paginator {
+  background: transparent;
+  border: none;
+  padding: 1rem 0 0;
+}
+
+.p-tag {
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.p-message {
+  border-radius: 10px;
+  margin: 1rem 0;
+}

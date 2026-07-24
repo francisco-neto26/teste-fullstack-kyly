@@ -1,0 +1,21 @@
+<div class="barra-busca">
+  <span class="p-input-icon-left barra-busca__campo">
+    <i class="pi pi-search"></i>
+    <input
+      pInputText
+      [(ngModel)]="termo"
+      (keyup.enter)="pesquisar()"
+      placeholder="Digite o código ou a descrição do produto..."
+      [disabled]="desabilitado"
+    />
+  </span>
+
+  <button
+    pButton
+    label="Buscar"
+    icon="pi pi-search"
+    [loading]="desabilitado"
+    [disabled]="!termo.trim() || desabilitado"
+    (click)="pesquisar()"
+  ></button>
+</div>
