@@ -131,3 +131,5 @@ app.MapControllers();
 
 // Inicia o servidor web
 app.Run();
+
+public partial class Program { }
