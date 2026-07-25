@@ -1,3 +1,4 @@
+// Modelo para o produto
 export interface ProdutoModel {
   id: string;
   codigoProduto: string;

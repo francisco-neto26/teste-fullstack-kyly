@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { LoginRequestModel } from '../models/login-request.model';
 import { LoginResponseModel } from '../models/login-response.model';
 
+// Serviço de autenticação para gerenciar login, logout e estado de autenticação do usuário
 @Injectable({
   providedIn: 'root'
 })

@@ -7,12 +7,14 @@ using KylyApi.Models;
 using FluentAssertions;
 using System.Linq;
 using System.Threading.Tasks;
+// Testes unitários para o ProdutoService, verificando a lógica de busca e priorização de produtos.
 public class ProdutoServiceTests : IAsyncLifetime
 {
     private PostgreSqlContainer _postgres = null!;
     private AppDbContext _context = null!;
     private ProdutoService _service = null!;
 
+    // Inicializa os recursos necessários para os testes
     public async Task InitializeAsync()
     {
         _postgres = new PostgreSqlBuilder().Build();
@@ -32,11 +34,12 @@ public class ProdutoServiceTests : IAsyncLifetime
     }
 
     [Fact]
+    // Testa se a busca por produtos prioriza a lista 1 em relação à lista 2
     public async Task Buscar_DevePriorizarLista1AntesDaLista2()
     {
         var resultado = await _service.BuscarAsync("CAMISETA", 1);
 
-        resultado.Itens.First().CodigoProduto.Should().Be("105725"); // exemplo
+        resultado.Itens.First().CodigoProduto.Should().Be("105725");
     }
 
     public async Task DisposeAsync()
@@ -50,7 +53,7 @@ public class ProdutoServiceTests : IAsyncLifetime
             await _postgres.DisposeAsync();
         }
     }
-
+    // Método auxiliar para popular o banco de dados com dados de teste
     private async Task SeedDadosAsync(AppDbContext context)
     {
         var p1 = new Produto

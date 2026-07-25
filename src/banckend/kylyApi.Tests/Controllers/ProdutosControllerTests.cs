@@ -4,6 +4,7 @@ using KylyApi.Controllers;
 using KylyApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+// Testes unitários para o ProdutosController, verificando o comportamento do método Buscar em diferentes cenários.
 public class ProdutosControllerTests
 {
     [Fact]

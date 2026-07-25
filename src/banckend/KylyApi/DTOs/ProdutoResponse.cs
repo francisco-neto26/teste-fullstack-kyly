@@ -1,5 +1,6 @@
 namespace KylyApi.DTOs;
 
+// DTO para resposta de produto, usado para enviar dados do produto na API.
 public class ProdutoResponse
 {
     public string Id { get; set; } = string.Empty;

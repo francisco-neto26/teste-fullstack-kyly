@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+// Componente de estado vazio, exibindo uma mensagem quando não há resultados
 @Component({
   selector: 'app-estado-vazio',
   standalone: true,

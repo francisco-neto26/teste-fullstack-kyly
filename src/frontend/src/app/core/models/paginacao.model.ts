@@ -1,3 +1,4 @@
+// Modelo para a paginação de resultados
 export interface PaginacaoModel<T> {
   paginaAtual: number;
   tamanhoPagina: number;

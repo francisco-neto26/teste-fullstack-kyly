@@ -8,6 +8,7 @@ import { ProdutoModel } from '../../../core/models/produto.model';
 import { ProdutoService } from '../../../core/services/produto.service';
 import { forkJoin, finalize } from 'rxjs';
 
+// Componente de tabela de produtos
 @Component({
   selector: 'app-tabela-produtos',
   standalone: true,
@@ -40,12 +41,14 @@ export class TabelaProdutosComponent {
     this.mudarPagina.emit((evento.page ?? 0) + 1);
   }
 
+  // Função para abrir o modal de detalhes do produto
   selecionarProduto(produto: ProdutoModel): void {
     this.produtoSelecionado = produto;
     this.codigoCopiado = false;
     this.exibirModalDetalhes = true;
   }
 
+  // funcao para copiar o código do produto para a área de transferência
   copiarCodigo(codigo: string, evento?: Event): void {
     if (evento) {
       evento.stopPropagation();
@@ -56,6 +59,7 @@ export class TabelaProdutosComponent {
     });
   }
 
+  // Função para solicitar a exportação dos produtos, seja da página atual ou de todas as páginas
   solicitarExportacao(): void {
     if (!this.totalRegistros) return;
 
@@ -65,12 +69,12 @@ export class TabelaProdutosComponent {
       this.exibirModalExportacao = true;
     }
   }
-
+  // Função para exportar os produtos da página atual
   exportarPaginaAtual(): void {
     this.exibirModalExportacao = false;
     this.gerarDownloadCsv(this.produtos, `produtos_pagina_${this.paginaAtual}.csv`);
   }
-
+  // Função para exportar todos os produtos, de todas as páginas
   exportarTudo(): void {
     this.exibirModalExportacao = false;
     this.carregandoExportacao = true;
@@ -79,7 +83,7 @@ export class TabelaProdutosComponent {
     for (let p = 1; p <= this.totalPaginas; p++) {
       requisicoes.push(this.produtoService.buscar(this.termo, p));
     }
-
+    // Usando forkJoin para esperar todas as requisições completarem
     forkJoin(requisicoes)
       .pipe(finalize(() => (this.carregandoExportacao = false)))
       .subscribe({
@@ -94,6 +98,7 @@ export class TabelaProdutosComponent {
       });
   }
 
+  // Função para gerar o arquivo CSV a partir da lista de produtos
   private gerarDownloadCsv(listaProdutos: ProdutoModel[], nomeArquivo: string): void {
     const cabecalho = ['ID', 'Código Produto', 'Descrição Produto', 'Código Cor', 'Descrição Cor', 'Código Tamanho', 'Descrição Tamanho'];
 

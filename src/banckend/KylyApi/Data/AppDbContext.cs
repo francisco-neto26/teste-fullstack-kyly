@@ -1,6 +1,7 @@
 using KylyApi.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+// Contexto do banco de dados, responsável por gerenciar as entidades e suas relações.
 namespace KylyApi.Data;
 public class AppDbContext : IdentityDbContext<ApplicationUser>
 {

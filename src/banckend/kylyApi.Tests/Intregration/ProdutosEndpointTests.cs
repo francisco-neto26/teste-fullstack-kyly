@@ -11,7 +11,7 @@ namespace KylyApi.Tests.Integration;
 
 public class ProdutosEndpointTests : IAsyncLifetime
 {
-    // 1. Cria um container temporário do PostgreSQL para o teste de integração
+    // Cria um container temporário do PostgreSQL para o teste de integração
     private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder()
         .WithImage("postgres:17-alpine")
         .Build();
@@ -32,7 +32,7 @@ public class ProdutosEndpointTests : IAsyncLifetime
             builder.UseSetting("ConnectionStrings:DefaultConnection", _postgres.GetConnectionString());
         });
     }
-
+    // Limpa os recursos utilizados pelo teste, como o container do PostgreSQL e a fábrica de aplicação
     public async Task DisposeAsync()
     {
         if (_factory != null)
@@ -46,18 +46,18 @@ public class ProdutosEndpointTests : IAsyncLifetime
     }
 
     [Fact]
+    // Testa se a requisição GET para o endpoint de produtos sem token JWT retorna Unauthorized (401)
     public async Task Get_Produtos_SemToken_RetornaUnauthorized()
     {
-        // Arrange
+
         var client = _factory.CreateClient();
 
-        // Act
         var response = await client.GetAsync("/api/produtos?termo=camiseta");
 
-        // Assert
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
+    // Carrega variáveis de ambiente do arquivo .env localizado na raiz do projeto, subindo diretórios até encontrar o arquivo.
     private static void CarregarVariaveisEnv()
     {
         var diretorioAtual = AppContext.BaseDirectory;
@@ -87,7 +87,7 @@ public class ProdutosEndpointTests : IAsyncLifetime
                 }
                 break;
             }
-
+            // Sobe um nível de diretório para continuar procurando o arquivo .env
             diretorioAtual = Directory.GetParent(diretorioAtual)?.FullName;
         }
     }

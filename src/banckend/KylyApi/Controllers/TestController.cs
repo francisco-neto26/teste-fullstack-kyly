@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
+//classe de teste para verificar se a API está online e funcionando corretamente
 namespace KylyApi.Controllers;
 //classe de teste para verificar se a API está online e funcionando corretamente
 [ApiController]

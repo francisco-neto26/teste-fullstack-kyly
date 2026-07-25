@@ -5,6 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
+// Componente de barra de busca para produtos
 @Component({
   selector: 'app-barra-busca',
   standalone: true,
