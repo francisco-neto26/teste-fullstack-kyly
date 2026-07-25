@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+// DTO para registro de usuário, usado para receber dados do usuário na API.
 namespace KylyApi.DTOs;
 // DTO para registro de usuário, usado para receber dados do usuário na API.
 public class RegisterDto

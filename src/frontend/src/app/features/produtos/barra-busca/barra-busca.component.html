@@ -1,21 +1,42 @@
-<div class="barra-busca">
-  <span class="p-input-icon-left barra-busca__campo">
-    <i class="pi pi-search"></i>
-    <input
-      pInputText
-      [(ngModel)]="termo"
-      (keyup.enter)="pesquisar()"
-      placeholder="Digite o código ou a descrição do produto..."
-      [disabled]="desabilitado"
-    />
-  </span>
+<div class="barra-busca-container">
+  <div class="barra-busca">
+    <span class="p-input-icon-left barra-busca__campo">
+      <i class="pi pi-search"></i>
+      <input
+        #campoInput
+        pInputText
+        [(ngModel)]="termo"
+        (ngModelChange)="onInput()"
+        (keyup.enter)="pesquisar()"
+        placeholder="Digite o código ou a descrição do produto..."
+      />
+    </span>
 
-  <button
-    pButton
-    label="Buscar"
-    icon="pi pi-search"
-    [loading]="desabilitado"
-    [disabled]="!termo.trim() || desabilitado"
-    (click)="pesquisar()"
-  ></button>
+    <button
+      pButton
+      label="Buscar"
+      icon="pi pi-search"
+      [loading]="desabilitado"
+      [disabled]="!termo.trim()"
+      (click)="pesquisar()"
+    ></button>
+  </div>
+
+  @if (historico.length > 0) {
+    <div class="barra-busca__historico">
+      <span class="barra-busca__historico-label">
+        <i class="pi pi-history"></i> Buscas recentes:
+      </span>
+      <div class="barra-busca__historico-chips">
+        @for (item of historico; track item) {
+          <span class="chip-historico" (click)="selecionarHistorico(item)">
+            {{ item }}
+          </span>
+        }
+        <button type="button" class="btn-limpar-historico" (click)="limparHistorico()" title="Limpar histórico">
+          <i class="pi pi-trash"></i>
+        </button>
+      </div>
+    </div>
+  }
 </div>

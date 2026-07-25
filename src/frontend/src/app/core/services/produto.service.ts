@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PaginacaoModel } from '../models/paginacao.model';
 import { ProdutoModel } from '../models/produto.model';
 
+// Serviço para gerenciar operações relacionadas a produtos
 @Injectable({
   providedIn: 'root'
 })

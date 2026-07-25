@@ -11,6 +11,7 @@ import { CabecalhoComponent } from '../../../shared/components/cabecalho/cabecal
 import { CarregandoComponent } from '../../../shared/components/carregando/carregando.component';
 import { EstadoVazioComponent } from '../../../shared/components/estado-vazio/estado-vazio.component';
 
+// Componente para busca de produtos
 @Component({
   selector: 'app-busca-produtos',
   standalone: true,

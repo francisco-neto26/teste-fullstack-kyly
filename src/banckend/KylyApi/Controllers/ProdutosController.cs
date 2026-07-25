@@ -3,6 +3,7 @@ using KylyApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+// Controller responsável por lidar com operações relacionadas a produtos, incluindo busca e paginação.
 namespace KylyApi.Controllers;
 
 [ApiController]

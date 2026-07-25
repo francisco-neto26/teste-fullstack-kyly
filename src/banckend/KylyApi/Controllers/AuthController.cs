@@ -4,6 +4,7 @@ using KylyApi.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+// Controller responsável por lidar com autenticação de usuários, incluindo registro e login.
 namespace KylyApi.Controllers;
 
 [ApiController]

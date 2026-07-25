@@ -1,14 +1,29 @@
 <header class="cabecalho">
   <div class="cabecalho__marca">
-    <img src="assets/images/logo_interno.png" />    
+    <img src="assets/images/logo_interno.png" alt="Grupo Kyly" class="cabecalho__logo-img" />
   </div>
 
-  <button
-    pButton
-    label="Sair"
-    icon="pi pi-sign-out"
-    severity="secondary"
-    [outlined]="true"
-    (click)="sair.emit()"
-  ></button>
+  <div class="cabecalho__usuario-acoes">
+    <div class="cabecalho__usuario-info">
+      <p-avatar 
+        icon="pi pi-user" 
+        styleClass="cabecalho__avatar" 
+        shape="circle" 
+      />
+      <div class="cabecalho__usuario-detalhes">
+        <span class="cabecalho__usuario-nome">{{ usuarioNome }}</span>
+        <p-tag value="Online" severity="success" styleClass="cabecalho__tag" />
+      </div>
+    </div>
+
+    <button
+      pButton
+      label="Sair"
+      icon="pi pi-sign-out"
+      severity="danger"
+      [outlined]="true"
+      size="small"
+      (click)="sair.emit()"
+    ></button>
+  </div>
 </header>

@@ -2,6 +2,7 @@ using KylyApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+// Classe responsável por popular o banco de dados com dados iniciais, incluindo usuários, produtos e listas de relevância.
 namespace KylyApi.Data;
 
 public static class DataSeeder

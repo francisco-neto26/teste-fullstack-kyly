@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { MessageModule } from 'primeng/message';
 import { AuthService } from '../../../core/services/auth.service';
 
+// Componente de login para autenticação do usuário
 @Component({
   selector: 'app-login',
   standalone: true,

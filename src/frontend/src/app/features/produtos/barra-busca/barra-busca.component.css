@@ -1,3 +1,9 @@
+.barra-busca-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .barra-busca {
   display: flex;
   gap: 0.75rem;
@@ -23,6 +29,70 @@
 .barra-busca button {
   flex-shrink: 0;
   padding: 0 1.5rem;
+}
+
+/* Estilos do Histórico */
+.barra-busca__historico {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.8125rem;
+  color: var(--kyly-text-muted);
+  animation: fadeIn 0.3s ease;
+}
+
+.barra-busca__historico-label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+}
+
+.barra-busca__historico-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chip-historico {
+  background: var(--kyly-surface, #ffffff);
+  border: 1px solid var(--kyly-border, #e2e8f0);
+  color: var(--kyly-primary, #0052cc);
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.775rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.chip-historico:hover {
+  background: var(--kyly-primary, #0052cc);
+  color: #ffffff;
+  border-color: var(--kyly-primary, #0052cc);
+  transform: translateY(-1px);
+}
+
+.btn-limpar-historico {
+  background: transparent;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.btn-limpar-historico:hover {
+  color: #e53e3e;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 576px) {

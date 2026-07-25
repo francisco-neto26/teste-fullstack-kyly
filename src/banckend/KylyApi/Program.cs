@@ -131,3 +131,6 @@ app.MapControllers();
 
 // Inicia o servidor web
 app.Run();
+
+// Classe parcial Program para permitir testes unitários e integração com frameworks de teste, sem iniciar o servidor web.
+public partial class Program { }

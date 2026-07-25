@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
+// tabela de Usuários do sistema.
 namespace KylyApi.Models;
 //tabela de Usuários do sistema.
 // Herda de IdentityUser para já ganhar campos como Email, Telefone e Hash de Senha de forma segura.
